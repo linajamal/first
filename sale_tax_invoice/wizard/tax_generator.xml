@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id="account_invoice_generator_view" model="ir.ui.view">
+        <field name="model">account.invoice.generator</field>
+        <field name="arch" type="xml">
+
+            <form string="account invoice generator">
+                <group>
+                <field name="seperate_invoice" />
+                <field name="invoice_id" />
+                <field name="tax_sequence" attrs="{'invisible': [('seperate_invoice', '=', False)],'required': [('seperate_invoice', '=', True)]}"/>
+            </group>
+                <notebook>
+                    <page string="Details">
+                    
+               
+                             <field name="line_ids" attrs="{'invisible': [('seperate_invoice', '=', False)]}">
+                                <tree editable="top">
+                                    <field name="name"/>
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                    <field name="new_qty"/>
+                                    <field name="price_unit" />
+                                    <field name="product_uom_id"/>
+                                </tree>
+                            </field>
+                        
+                        
+                       
+                    </page>
+                </notebook>
+                    <footer>
+                    <button string="Ok" type="object" name="create_final_invoice" class="oe_highlight"  />
+                    <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="act_account_invoice_generator" model="ir.actions.act_window">
+        <field name="name">account invoice generator</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.invoice.generator</field>
+        <field name="view_mode">form,tree</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="context">{'default_invoice_id': active_id}</field>
+        <field name="binding_view_types">form</field>
+
+    </record>
+
+    
+
+</odoo>

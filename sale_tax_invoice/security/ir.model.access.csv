@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_move_generator,account.move.generator,sale_tax_invoice.model_account_invoice_generator,account.group_account_user,1,1,1,1
+access_account_generator_line,account.move.generator.line,sale_tax_invoice.model_move_generator_line,account.group_account_user,1,1,1,1
+
+
